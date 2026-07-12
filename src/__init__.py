@@ -28,6 +28,10 @@ def create_app() -> Flask:
     # applying configurations
     app.config.from_object(CONFIG_MAP.get(mode, Default))
 
+    # routes
+    from src.routes import routes
+    app.register_blueprint(routes, url_prefix="/")
+
     # global web exception handler
     @app.errorhandler(Exception)
     def handle_unhandled_exception(e):
