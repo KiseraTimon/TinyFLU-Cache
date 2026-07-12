@@ -59,3 +59,25 @@ def simulate():
     )
 
     return jsonify(result.to_dict())
+
+
+# compare route
+@app.post("/compare")
+def compare():
+    body = request.get_json(force=True) or {}
+    cache_size = int(body.get("cache_size", 100))
+    trace_length = int(body.get("trace_length", 20000))
+    num_items = int(body.get("num_items", 1000))
+    zipf_alpha = float(body.get("zipf_alpha", 1.0))
+    seed = body.get("seed")
+
+
+    return jsonify(
+        compare_policies(
+            cache_size,
+            trace_length,
+            num_items,
+            zipf_alpha,
+            seed
+        )
+    )
