@@ -62,7 +62,7 @@ def simulate():
 
 
 # compare route
-@app.post("/compare")
+@app.post("/compare", methods=['GET', 'POST'])
 def compare():
     body = request.get_json(force=True) or {}
     cache_size = int(body.get("cache_size", 100))
@@ -84,7 +84,7 @@ def compare():
 
 
 # sweep route
-@app.post("/sweep")
+@app.post("/sweep", methods=['GET', 'POST'])
 def sweep():
     body = request.get_json(force=True) or {}
     cache_sizes = body.get("cache_sizes", [10, 25, 50, 100, 200, 400])
