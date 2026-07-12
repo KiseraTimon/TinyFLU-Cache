@@ -81,3 +81,25 @@ def compare():
             seed
         )
     )
+
+
+# sweep route
+@app.post("/sweep")
+def sweep():
+    body = request.get_json(force=True) or {}
+    cache_sizes = body.get("cache_sizes", [10, 25, 50, 100, 200, 400])
+    trace_length = int(body.get("trace_length", 20000))
+    num_items = int(body.get("num_items", 1000))
+    zipf_alpha = float(body.get("zipf_alpha", 1.0))
+    seed = body.get("seed")
+
+
+    data = sweep_cache_sizes(
+        cache_sizes,
+        trace_length,
+        num_items,
+        zipf_alpha,
+        seed
+    )
+
+    return jsonify(config=dict(trace_length=trace_length, num_items=num_items, zipf_alpha=zipf_alpha), sweep=data)
