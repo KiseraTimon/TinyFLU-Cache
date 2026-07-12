@@ -1,6 +1,7 @@
 from __future__ import annotations
 from flask import Flask
 from dotenv import load_dotenv
+import os
 
 from config import Default, Development, Production
 from utilities import log_critical_error, log_system_info
