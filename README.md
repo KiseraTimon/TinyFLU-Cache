@@ -157,4 +157,4 @@ grows) while keeping the implementation approachable.
 
 ## License
 
-MIT — see `LICENSE` if you add one before publishing.
+MIT — see `LICENSE`
