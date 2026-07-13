@@ -31,7 +31,7 @@ def health():
 
 
 # simulation runner route
-@routes.route("/simulate", methods=['GET', 'POST'])
+@routes.route("/simulate", methods=['POST'])
 def simulate():
     body = request.get_json(force=True) or {}
     policy = body.get("policy", "lru")
@@ -62,7 +62,7 @@ def simulate():
 
 
 # compare route
-@routes.post("/compare", methods=['GET', 'POST'])
+@routes.route("/compare", methods=['POST'])
 def compare():
     body = request.get_json(force=True) or {}
     cache_size = int(body.get("cache_size", 100))
@@ -84,7 +84,7 @@ def compare():
 
 
 # sweep route
-@routes.post("/sweep", methods=['GET', 'POST'])
+@routes.route("/sweep", methods=['POST'])
 def sweep():
     body = request.get_json(force=True) or {}
     cache_sizes = body.get("cache_sizes", [10, 25, 50, 100, 200, 400])
