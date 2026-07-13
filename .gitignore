@@ -6,12 +6,13 @@ dist/
 wheels/
 *.egg-info
 
-# Virtual environments
+# Environments
 .venv
-
+.vscode
 # secrets
 **.env
 
 # dump files
 **/dump/**
 **/logs/**
+**.pdf
